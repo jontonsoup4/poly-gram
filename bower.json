@@ -16,10 +16,7 @@
   },
   "homepage": "https://github.com/jontonsoup4/poly-gram",
   "ignore": [
-    ".publish",
-    "dist/bower_components",
-    "dist/demo-page.html",
-    "dist/index.html",
+    "dist",
     "src",
     ".bowerrc",
     ".gitignore",

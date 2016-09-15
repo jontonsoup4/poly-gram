@@ -65,6 +65,12 @@ gulp.task("clean:static", function () {
     ]);
 });
 
+// Copy main files to root
+gulp.task("copy", ["build"], function () {
+    return gulp.src(["dist/poly-gram.html", "dist/poly-gram-filters.html"])
+        .pipe(gulp.dest("./"));
+});
+
 // Watch all files
 gulp.task("watch", function () {
     gulp.watch(paths.static.input, ["build:static"]);
