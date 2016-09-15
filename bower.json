@@ -6,7 +6,6 @@
     "Jonathan Reed <jontonsoup4@gmail.com>"
   ],
   "keywords": ["web-components", "polymer", "instagram", "images"],
-  "private": true,
   "dependencies": {
     "polymer": "polymer/polymer#^1.4.0"
   },
