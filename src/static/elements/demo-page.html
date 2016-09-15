@@ -1,0 +1,108 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="/bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="/bower_components/paper-item/paper-item.html">
+<link rel="import" href="poly-gram.html">
+<dom-module id=demo-page>
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+            .content {
+                display: flex;
+                margin: 0 auto;
+                flex-wrap: wrap;
+            }
+            h1 {
+                color: #212121;
+                font-family: 'Roboto', 'Noto', sans-serif;
+                font-size: 50px;
+                text-align: center;
+            }
+            poly-gram {
+                margin-right: 40px;
+                height: 100%;
+            }
+            poly-gram,
+            paper-dropdown-menu,
+            paper-listbox {
+                margin: 0 auto;
+                width: 300px;
+            }
+            paper-item:hover {
+                background: #E5E5E5;
+            }
+
+
+
+            @media (min-width: 668px) {
+                .content {
+                    flex-wrap: nowrap;
+                    width: 90vw;
+                }
+                h1 {
+                    font-size: 72px;
+                }
+                poly-gram {
+                    height: 400px;;
+                    margin-right: 20px;
+                }
+                poly-gram,
+                paper-dropdown-menu,
+                paper-listbox {
+                    width: 400px;
+                }
+            }
+        </style>
+        <h1>Poly-Gram</h1>
+        <div class="content">
+        <poly-gram filter=[[selectedFilter]] image="http://i.imgur.com/6u052Bp.jpg"></poly-gram>
+        <paper-dropdown-menu label="Pick a filter">
+            <paper-listbox class="dropdown-content" selected=12>
+                <template is="dom-repeat" items="{{filters}}">
+                    <paper-item value$="[[item.value]]">[[item.filter]]</paper-item>
+                </template>
+            </paper-listbox>
+        </paper-dropdown-menu>
+    </div>
+    </template>
+    <script>
+        Polymer({
+            is: 'demo-page',
+            properties: {
+                selectedFilter: String,
+            },
+            listeners: {
+                "iron-select": "_setFilter"
+            },
+            ready: function () {
+                this.filters = [
+                    {"filter": "1977","value": "_1977"},
+                    {"filter": "Aden","value": "aden"},
+                    {"filter": "Brooklyn", "value": "brooklyn"},
+                    {"filter": "Clarendon", "value": "clarendon"},
+                    {"filter": "Gingham", "value": "gingham"},
+                    {"filter": "Hudson", "value": "hudson"},
+                    {"filter": "Inkwell", "value": "inkwell"},
+                    {"filter": "Lark", "value": "lark"},
+                    {"filter": "Lo-fi", "value": "lofi"},
+                    {"filter": "Mayfair", "value": "mayfair"},
+                    {"filter": "Moon", "value": "moon"},
+                    {"filter": "Nashville", "value": "nashville"},
+                    {"filter": "None", "value": ""},
+                    {"filter": "Perpetua", "value": "perpetua"},
+                    {"filter": "Reyes", "value": "reyes"},
+                    {"filter": "Toaster", "value": "toaster"},
+                    {"filter": "Walden", "value": "walden"},
+                    {"filter": "Willow", "value": "willow"},
+                    {"filter": "X-Pro II", "value": "xpro2"}
+                ]
+            },
+            _setFilter: function (e) {
+                this.selectedFilter = e.detail.item.getAttribute("value");
+            }
+        });
+    </script>
+</dom-module>
